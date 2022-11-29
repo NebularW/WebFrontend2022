@@ -10,7 +10,7 @@
 
 ## 2. 文件结构
 
-```
+```bash
 │  README.md
 │
 ├─assets
@@ -39,7 +39,7 @@
 
 ### 3.1 登录页面
 
->  首先打开`login.html`
+> 首先打开`login.html`
 
 ![image-20221129203353708](http://img.nebular.site/markdown/image-20221129203353708.png)
 
