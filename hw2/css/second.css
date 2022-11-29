@@ -1,0 +1,18 @@
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei";
+    background: url("../assets/background.jpg");
+    background-size: cover;
+}
+
+
+
+.itemImg {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
