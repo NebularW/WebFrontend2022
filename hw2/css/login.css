@@ -1,15 +1,15 @@
-body{
+body {
     margin: 0;
     padding: 0;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background: url("../assets/background.jpg");
+    font-family: Microsoft YaHei;
+    background: url("../assets/home.jpg");
     background-size: cover;
 }
 
-.signIn{
-    background:rgb(245, 77, 16);
+.signIn {
+    background: rgb(250, 202, 58);
 }
 
-.signUp{
-    background:rgba(212, 108, 89, 1);
+.signUp {
+    background: rgb(184, 180, 180);
 }

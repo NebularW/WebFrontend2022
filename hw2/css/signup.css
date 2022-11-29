@@ -1,32 +1,32 @@
-body{
+body {
     margin: 0;
     padding: 0;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    background: url("../assets/background.jpg");
+    font-family: Microsoft YaHei;
+    background: url("../assets/home.jpg");
     background-size: cover;
 }
 
-.checkBox{
+.checkBox {
     position: relative;
     top: 0;
     left: 0;
     padding: 10px 0;
     font-size: 16px;
-    color:rgb(20, 18, 18);
+    color: rgb(20, 18, 18);
     transition: .5s;
     margin-bottom: 10px;
 }
 
-.checkItem{
+.checkItem {
     width: 30px;
     height: 17px;
     margin: 0 2px 0 2px;
 }
 
-.signUp{
-    background: rgb(245, 77, 16);
+.signUp {
+    background: rgb(250, 202, 58);
 }
 
-.backSignIn{
-    background: rgba(212, 108, 89, 1);
+.backSignIn {
+    background: rgb(184, 180, 180);
 }
