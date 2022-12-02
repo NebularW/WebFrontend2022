@@ -18,6 +18,7 @@ a {
 .inputBox input {
     width: 100%;
     padding: 10px 0;
+    font-size: 20px;
     color: azure;
     letter-spacing: 1px;
     margin-bottom: 30px;
@@ -32,7 +33,7 @@ a {
     top: 0;
     left: 0;
     padding: 10px 0;
-    font-size: 16px;
+    font-size: 20px;
     color: azure;
     pointer-events: none;
     transition: .5s;
@@ -43,7 +44,7 @@ a {
     top: -18px;
     left: 0;
     color: coral;
-    font-size: 12px;
+    font-size: 20px;
 }
 
 .formBox {
@@ -56,10 +57,25 @@ a {
     outline: none;
     color: black;
     padding: 10px 20px;
+    font-size: 20px;
     cursor: pointer;
     border-radius: 5px;
     margin: 0 20px 0 20px;
 }
+
+/*@media screen and (max-width: 400px){*/
+/*    .box {*/
+/*        position: absolute;*/
+/*        top: 50%;*/
+/*        left: 50%;*/
+/*        transform: translate(-50%, -50%);*/
+/*        width: 400px;*/
+/*        padding: 40px;*/
+/*        !*background: rgba(0,0,0,.8);*!*/
+/*        border-radius: 10px;*/
+/*        background: azure;*/
+/*    }*/
+/*}*/
 
 .box {
     position: absolute;
@@ -76,7 +92,7 @@ a {
     margin: 0 0 30px;
     padding: 0;
     color: azure;
-    font-size: 30px;
+    font-size: 40px;
     text-align: center;
 }
 
@@ -108,7 +124,7 @@ a {
     outline: none;
     color: azure;
     font-size: 20px;
-    font-family: Microsoft YaHei;
+    font-family: Microsoft YaHei, system-ui;
     padding: 10px;
     margin: 6px;
     cursor: pointer;
