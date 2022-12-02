@@ -11,6 +11,7 @@
 ## 2. 文件结构
 
 ```bash
+│  index.html
 │  README.md
 │
 ├─assets
@@ -25,7 +26,6 @@
 │
 └─html
     │  first.html
-    │  login.html
     │  signup.html
     │
     └─second
@@ -33,13 +33,14 @@
             2.html
             3.html
 
+
 ```
 
 ## 3. 页面设置
 
 ### 3.1 登录页面
 
-> 首先打开`login.html`
+> 首先打开`index.html`
 
 ![image-20221129203353708](http://img.nebular.site/markdown/image-20221129203353708.png)
 
