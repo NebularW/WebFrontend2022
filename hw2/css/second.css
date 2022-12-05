@@ -15,12 +15,3 @@ body {
     object-fit: contain;
     border-radius: 1% 1% 1% 1%;
 }
-
-.watermark {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    --watermarkSVG: null;
-    background-image: var(--watermarkSVG);
-    pointer-events: none;
-}
