@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Page5</title>
+</head>
+<body onload="init()" id="main">
+
+</body>
+
+<script type="text/javascript" src="../../js/sha512.js"></script>
+<script type="text/javascript" src="../../js/utf_8.js"></script>
+<script type="text/javascript" src="../../js/mersenne-twister.js"></script>
+<script type="text/javascript" src="../../js/utils.js"></script>
+<script type="text/javascript" src="../../js/readimg.js"></script>
+<script type="text/javascript" src="../../js/setimg.js"></script>
+<script type="text/javascript" src="../../js/main.js"></script>
+
+<script>
+    function init() {
+        writeIMG();
+    }
+
+    function writeIMG() {
+        function writefunc() {
+            if (writeMsgToCanvas('canvas', 'Sky 201250044', '', 1) != null) {
+                var main = document.getElementById("main");
+                var myCanvas = document.getElementById("canvas");
+                var image = document.createElement('img');
+                image.src = myCanvas.toDataURL("image/png");
+                image.style = "position: absolute; width: 100%; height: 100%; object-fit: contain;"
+                main.append(image);
+                console.log(image);
+            }
+        }
+
+        loadIMGtoCanvas('file', 'canvas', writefunc, 800, '6.jpg');
+    }
+
+    function readIMG() {
+        function readfunc() {
+            var t = readMsgFromCanvas('canvas', $("#pass1").val(), 1);
+            if (t != null) {
+                t = t.split('&').join('&amp;');
+                t = t.split(' ').join('&nbsp;');
+                t = t.split('<').join('&lt;');
+                t = t.split('>').join('&gt;');
+                t = t.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                $("#result").html(t);
+            } else $("#result").html('ERROR REAVEALING MESSAGE!');
+
+        }
+
+        loadIMGtoCanvas('file1', 'canvas', readfunc);
+    }
+</script>
+
+</html>
