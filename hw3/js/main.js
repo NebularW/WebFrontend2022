@@ -1,5 +1,3 @@
-//MAIN
-// Parameters optimized according to tests.
 function writeMsgToCanvas(canvasId,msg,pass,mode){
     mode=(mode=== undefined)?0:parseInt(mode);
     const f = writeMsgToCanvas_base;
@@ -15,21 +13,21 @@ function writeMsgToCanvas(canvasId,msg,pass,mode){
     }
 }
 
-//Read msg from the image in canvasId.
-//Return msg (null -> fail)
-// function readMsgFromCanvas(canvasId,pass,mode){
-//     mode=(mode=== undefined)?0:parseInt(mode);
-//     const f = readMsgFromCanvas_base;
-//     switch (mode) {
-//         case 1: return f(canvasId, pass, true, 23, 2, [2, 9, 16], true, false)[1];
-//         case 2: return f(canvasId, pass, true, 17, 3, [1, 8], true, false)[1];
-//         case 3: return f(canvasId, pass, true, 17, 5, [1, 8], true, false)[1];
-//         case 4: return f(canvasId, pass, true, 5, 5, [0], true, false)[1];
-//         case 5: return f(canvasId, pass, true, 5, 6, [0], true, true)[1];
-//         case 0:
-//         default: return f(canvasId, pass, false, 1)[1];
-//     }
-// }
+// Read msg from the image in canvasId.
+// Return msg (null -> fail)
+function readMsgFromCanvas(canvasId,pass,mode){
+    mode=(mode=== undefined)?0:parseInt(mode);
+    const f = readMsgFromCanvas_base;
+    switch (mode) {
+        case 1: return f(canvasId, pass, true, 23, 2, [2, 9, 16], true, false)[1];
+        case 2: return f(canvasId, pass, true, 17, 3, [1, 8], true, false)[1];
+        case 3: return f(canvasId, pass, true, 17, 5, [1, 8], true, false)[1];
+        case 4: return f(canvasId, pass, true, 5, 5, [0], true, false)[1];
+        case 5: return f(canvasId, pass, true, 5, 6, [0], true, true)[1];
+        case 0:
+        default: return f(canvasId, pass, false, 1)[1];
+    }
+}
 
 //load image from html5 input and execute callback() if successful
 function loadIMGtoCanvas(inputId, canvasId, callback, maxsize, imgPath) {
@@ -62,7 +60,7 @@ function loadIMGtoCanvas(inputId, canvasId, callback, maxsize, imgPath) {
         callback();
         document.body.removeChild(canvas);
     };
-    image.src = '../../assets/pics/' + imgPath;
+    image.src = './assets/pics/' + imgPath;
     console.log(image.src);
 
 }
