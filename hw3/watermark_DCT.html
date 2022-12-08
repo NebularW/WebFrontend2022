@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scale=1">
+    <title>秋日校园</title>
+    <link rel="icon" type="image/png" sizes="128x128" href="assets/icons/128.ico">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <link rel="stylesheet" type="text/css" href="css/second.css">
+</head>
+
+<body onload="init()">
+<div id="second">
+    <div class="header">
+        <span class="title">秋日校园</span>
+        <div class="btns">
+            <button class="headerBtn" onclick="window.location.href = 'html/first.html'">主页</button>
+            <button class="headerBtn" onclick="window.location.href = 'index.html'">登出</button>
+        </div>
+    </div>
+    <div id="main"></div>
+</div>
+</body>
+
+<script type="text/javascript" src="js/sha512.js"></script>
+<script type="text/javascript" src="js/utf_8.js"></script>
+<script type="text/javascript" src="js/mersenne-twister.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/readImg.js"></script>
+<script type="text/javascript" src="js/setImg.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script>
+    function init() {
+        writeIMG();
+    }
+
+    function writeIMG() {
+        function writeFunc() {
+            if (writeMsgToCanvas('canvas', 'Sky 201250044', '', 1) != null) {
+                const main = document.getElementById("main");
+                const myCanvas = document.getElementById("canvas");
+                const image = document.createElement('img');
+                image.src = myCanvas.toDataURL("image/png");
+                image.style = "position: absolute; width: 100%; height: 100%; object-fit: contain;"
+                main.append(image);
+                console.log(image);
+            }
+        }
+        console.log("loading");
+        loadIMGtoCanvas('file', 'canvas', writeFunc, 800, 'h1.jpg');
+    }
+</script>
+
+</html>
