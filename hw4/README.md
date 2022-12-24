@@ -1,103 +1,111 @@
-# Web前端开发 作业2
+# Web前端开发 作业4
 
 ## 1. 作业要求
 
-使用html、css技术设计四个界面：登陆、注册、一级页面（主页），二级页面。
-
-内容为高清图片展示，其中一级页面为大量图片的缩略图展示（可参考瀑布流布局），二级页面为上述页面中选定图片的放大（或原图）展示。
-
-主题：秋日校园
+在前面一级页面中，自行查找或者参照如下文献的方案，实现主题切换。两种主题即可。
 
 ## 2. 文件结构
 
 ```bash
-│  index.html
+│  first.html
 │  README.md
 │
 ├─assets
-│  │  background.jpg
-│  │  home.jpg
-│  │
-│  ├─icons
-│  │
-│  └─pics
-│
 ├─css
-│
-└─html
-    │  first.html
-    │  signup.html
-    │
-    └─second
-            1.html
-            2.html
-            3.html
-
+├─html
+└─js
 
 ```
 
-## 3. 页面设置
+打开first.html即可进入一级页面
 
-### 3.1 登录页面
+## 3. 实现效果
 
-> 首先打开`index.html`
+### 3.1 淡色主题（默认主题）
 
-![image-20221129203353708](http://img.nebular.site/markdown/image-20221129203353708.png)
+> 首先打开`first.html`
 
-该页面负责用户的登录。
+![image-20221224225605752](http://img.nebular.site/md/image-20221224225605752.png)
 
-1. 点击注册，跳转至注册页面(`signup.html`)
-   - 输入用户名但没有输入密码，输入密码但没有输入用户名，点击登录，会提醒必须输入用户名密码
-2. 输入用户名密码、点击登录后，跳转至主页(`first.html`)
+打开页面是默认的淡色主题，点击右上角的按钮，即可切换为另一个主题
 
-### 3.2 注册页面
+### 3.2 深色主题
 
-![image-20221129203802739](http://img.nebular.site/markdown/image-20221129203802739.png)
+![image-20221224225802679](http://img.nebular.site/md/image-20221224225802679.png)
 
-该页面负责用户的注册。
+此为深色主题，如需切换回淡色主题，只需要再次点击右上角按钮即可。
 
-1. 输入所有信息后，点击注册，会跳转至登录页面
-   - 信息输入不完全，点击注册，会提示需要输入所有信息
-   - 电子邮箱格式输入错误，点击注册，会提醒需要输入正确格式的电子邮箱地址
-2. 点击返回，即可返回登录页面
+### 3.3 动画效果
 
-### 3.3 主页
+![button](http://img.nebular.site/md/button.gif)
 
-![image-20221202201716212](http://img.nebular.site/md/image-20221202201716212.png)
+在切换按钮上，实现了一定的动画效果。
 
-该页面以瀑布流方式展示大量图片的缩略图。
+## 4. 实现方案说明
 
-1. 点击页面顶部的主页，会跳转至主页（即当前页面）
-2. 点击页面顶部的登出，会跳转至登录页面
-3. 点击用户Sky上传的照片，会跳转至二级页面，展示选定图片的放大展示
+我使用的**方案**是CSS变量+类名切换。
 
-### 3.4 二级页面
+### 4.1 大体思路
 
-![image-20221202201822415](http://img.nebular.site/md/image-20221202201822415.png)
+**大体思路**是提前将CSS样式文件载入，切换时将指定的根元素类名更换。不过这里相对灵活的是，默认在根作用域下定义好CSS变量，只需要在不同的主题下更改CSS变量对应的取值即可。
 
-该页面展示选定图片的放大展示。
+### 4.2 关键实现
 
-1. 点击页面顶部的主页，会跳转至主页
-2. 点击页面顶部的登出，会跳转至登录页面
+1. 提前定义CSS变量
 
-## 4. 响应式布局
+```css
+:root[theme='dark'] {
+    --theme-color: azure;
+    --theme-btn: rgba(0, 0, 0, .8);
+    --theme-item: rgba(0, 0, 0, .5);
+    --theme-bg: url("../assets/background.jpg");
+}
 
-以上页面都针对移动端设备进行优化，效果如下：
+:root[theme='light'] {
+    --theme-color: black;
+    --theme-btn: rgba(255, 255, 255, 0.8);
+    --theme-item: rgba(255, 255, 255, 0.5);
+    --theme-bg: url("../assets/light.jpg");
+}
+```
 
-> 以下页面的显示设备为iPhone 12 Pro
+2. 部分元素样式为CSS变量
 
-1. 登录页面
+```css
+.item {
+    margin-bottom: 10px;
+    break-inside: avoid;
+    background: var(--theme-item);
+    border-radius: 5%;
+}
+```
 
-![image-20221202202020243](http://img.nebular.site/md/image-20221202202020243.png)
+3. js文件中根据不同主题更改CSS变量
 
-2. 注册页面
+```javascript
+let container=document.querySelector('label');
+let dark = false;
+container.onclick=function () {
+    console.log('switch');
+    if(dark===false){
+        dark = true;
+        document.documentElement.setAttribute('theme', 'dark');
+    }else{
+        dark = false;
+        document.documentElement.setAttribute('theme', 'light');
+    }
+}
+```
 
-![image-20221202202100859](http://img.nebular.site/md/image-20221202202100859.png)
+### 4.3 方案特点
 
-3. 主页
+方案优点：
 
-![image-20221202202136170](http://img.nebular.site/md/image-20221202202136170.png)
+1. 不用重新加载样式文件，在样式切换时不会有卡顿
+2. 在需要切换主题的地方利用var()绑定变量即可，不存在优先级问题
+3. 新增或修改主题方便灵活，仅需新增或修改CSS变量即可，在var()绑定样式变量的地方就会自动更换
 
-4. 二级页面
+方案缺点：
 
-![image-20221202202217679](http://img.nebular.site/md/image-20221202202217679.png)
+1. 首屏加载时会牺牲一些时间加载样式资源
+2. 对IE的兼容性不好（在当下环境可以忽略）

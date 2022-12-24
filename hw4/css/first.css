@@ -115,7 +115,8 @@ label {
     vertical-align: middle;
 }
 
-label, input {
+label,
+input {
     vertical-align: middle;
 }
 
@@ -174,5 +175,3 @@ label, input {
 .mui-switch.mui-switch-animbg:checked:before {
     transition: left 0.3s;
 }
-
-
