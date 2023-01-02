@@ -8,6 +8,21 @@
 
 主题：秋日校园
 
+```sql
+CREATE DATABASE IF NOT EXISTS web CHARACTER SET UTF8;
+USE web;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+	`email` varchar(64) NOT NULL,
+	`name` varchar(64) NOT NULL,
+	`password` varchar(64) NOT NULL,
+	`gender` int NOT NULL,
+	PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+
+
 ## 2. 文件结构
 
 ```bash
