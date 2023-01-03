@@ -10,10 +10,11 @@
     <link rel="stylesheet" type="text/css" href="../../css/second.css">
 </head>
 
-<body>
+<body onload="load()">
 <div id="second">
     <div class="header">
-        <span class="title">秋日校园</span>
+        <text class="title" style="color: azure">欢迎，</text>
+        <div class="title" id="user" ></div>
         <div class="btns">
             <button class="headerBtn" onclick="window.location.href = '../first.html'">主页</button>
             <button class="headerBtn" onclick="window.location.href = '../../index.html'">登出</button>
@@ -25,5 +26,19 @@
 </div>
 </body>
 
+<script>
+    const email = sessionStorage.getItem('email');
+
+    function load() {
+        console.log(email)
+        if (email == null) {
+            window.alert('请先登录！')
+            window.location.href = '../../index.html'
+        }
+    }
+
+    const user = document.getElementById('user');
+    user.innerHTML = email
+</script>
 
 </html>
