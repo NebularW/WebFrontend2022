@@ -36,7 +36,7 @@ app.get('/login',function (req, res) {
     })
 })
 
-app.get('/register',function (req, res) {
+app.get('/signup',function (req, res) {
     const params = req.query;
     console.log(params)
     const q1 = "select * from userinfo where email=" + "\"" + params.email + "\"";

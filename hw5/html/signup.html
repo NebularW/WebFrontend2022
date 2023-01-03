@@ -19,12 +19,17 @@
         </div>
 
         <div class="inputBox">
-            <input id="password" type="text" required>
+            <input id="password" type="password" required>
             <label>密码</label>
         </div>
 
+        <div class="item">
+            <div style="display: inline; color:azure">密码强度</div>
+            <div style="margin: 0 auto" id="pwdStrength"></div>
+        </div>
+
         <div class="inputBox">
-            <input id="password2" type="text" required>
+            <input id="password2" type="password" required>
             <label>确认密码</label>
         </div>
 
@@ -40,7 +45,7 @@
         </div>
 
         <div class="inputButtonBox">
-            <input class="btn signUp" type="submit" name="" value="注册" onclick="register()">
+            <input class="btn signUp" id="btn" type="submit" name="" value="注册" onclick="register()">
             <input class="btn backSignIn" type="submit" name="" value="返回"
                    onclick="window.location.href = '../index.html'">
         </div>
@@ -83,10 +88,7 @@
             const password = document.getElementById("password").value;
             const password2 = document.getElementById("password2").value;
             const code = document.getElementById("code").value;
-            if (!isEmail(email)) {
-                window.alert('邮箱格式不正确')
-                location.reload()
-            } else if (!checkPassword(password)) {
+            if (!checkPassword(password)) {
                 window.alert('密码不符合规则')
                 location.reload()
             } else if (password !== password2) {
@@ -102,7 +104,7 @@
                     password: password,
                 };
                 console.log(params)
-                $.get("http://localhost:3001/register", params, function (result) {
+                $.get("http://localhost:3001/signup", params, function (result) {
                     console.log(result);
                     if (result === 1) {
                         window.alert('该邮箱已被注册')
@@ -152,8 +154,8 @@
                 // 矩形的宽高
                 ctx.clearRect(0, 0, canvas_width, canvas_height)
                 // 开始绘制
-                const scode = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,1,2,3,4,5,6,7,8,9,";
-                const arrCode = scode.split(",");
+                const dict = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,1,2,3,4,5,6,7,8,9,";
+                const arrCode = dict.split(",");
                 const arrLength = arrCode.length;
                 for (i = 0; i < 4; i++) {
                     const index = Math.floor(Math.random() * arrCode.length);
@@ -214,40 +216,28 @@
 
         function PasswordStrength(passwordID, strengthID) {
             this.init(strengthID);
-            const _this = this;
+            var _this = this;
             document.getElementById(passwordID).onkeyup = function () {//onkeyup 事件,在键盘按键被松开时发生,进行判断
                 _this.checkStrength(this.value);
             }
         }
-
         PasswordStrength.prototype.init = function (strengthID) {
             const id = document.getElementById(strengthID);
             const div = document.createElement('div');
             const strong = document.createElement('strong');
             this.oStrength = id.appendChild(div);
-            this.oStrengthTxt = id.parentNode.appendChild(strong);
         };
         PasswordStrength.prototype.checkStrength = function (val) { //验证密码强度的函数
             let lv = 0; //初始化提示消息为空
-            if (val.match(/[a-z]/g)) {
-                lv++;
-            } //验证是否包含字母
-            if (val.match(/[0-9]/g)) {
-                lv++;
-            } // 验证是否包含数字
-            if (val.match(/(.[^a-z0-9])/g)) {
-                lv++;
-            } //验证是否包含字母，数字，字符
-            if (val.length < 6) {
-                lv = 0;
-            } //如果密码长度小于6位，提示消息为空
-            if (lv > 3) {
-                lv = 3;
-            }
+            if (val.match(/[a-z]/g)) { lv++; } //验证是否包含字母
+            if (val.match(/[0-9]/g)) { lv++; } // 验证是否包含数字
+            if (val.match(/(.[^a-z0-9])/g)) { lv++; } //验证是否包含字母，数字，字符
+            if (val.length < 6) { lv = 0; } //如果密码长度小于6位，提示消息为空
+            if (lv > 3) { lv = 3; }
+            console.log(lv);
             this.oStrength.className = 'strengthLv' + lv;
-            // this.oStrengthTxt.innerHTML = aLvTxt[lv];
         };
-        new PasswordStrength('password', 'pwdStrength');
+        new PasswordStrength('password','pwdStrength');
     </script>
 </div>
 </body>

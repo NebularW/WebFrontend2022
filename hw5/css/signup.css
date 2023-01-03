@@ -13,3 +13,31 @@ body {
 .backSignIn {
     background: rgb(184, 180, 180);
 }
+
+#pwdStrength {
+    padding-right: 0;
+    height: 20px;
+    width: 50%;
+    border: 1px solid #ccc;
+}
+.strengthLv1 {
+    background: red;
+    height: 20px;
+    width: 33%;
+}
+
+.strengthLv2 {
+    background: orange;
+    height: 20px;
+    width: 66%;
+}
+
+.strengthLv3 {
+    background: green;
+    height: 20px;
+    width: 100%;
+}
+
+#code{
+    width: 50%;
+}

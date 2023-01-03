@@ -31,10 +31,7 @@ function register() {
     const password = document.getElementById("password").value;
     const password2 = document.getElementById("password2").value;
     const code = document.getElementById("code").value;
-    if (!isEmail(email)) {
-        window.alert('邮箱格式不正确')
-        location.reload()
-    } else if (!checkPassword(password)) {
+    if (!checkPassword(password)) {
         window.alert('密码不符合规则')
         location.reload()
     } else if (password !== password2) {
