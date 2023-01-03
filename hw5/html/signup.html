@@ -2,7 +2,6 @@
 <html lang="ch">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=0.7,user-scale=1">
     <title>秋日校园</title>
     <link rel="icon" type="img/png" sizes="128x128" href="../assets/icons/128.ico">
     <link rel="stylesheet" type="text/css" href="../css/global.css">
@@ -11,7 +10,7 @@
 <body>
 <div class="box">
     <h2>秋日校园</h2>
-    <form class="formBox" action="../index.html">
+    <form class="formBox">
 
         <div class="inputBox">
             <input id="userName" type="text" required>
@@ -45,9 +44,9 @@
         </div>
 
         <div class="inputButtonBox">
-            <input class="btn signUp" id="btn" type="submit" name="" value="注册" onclick="register()">
+            <input class="btn signUp"  type="submit" name="" value="注册" onclick="return register()">
             <input class="btn backSignIn" type="submit" name="" value="返回"
-                   onclick="window.location.href = '../index.html'">
+                   onclick="window.location.href = 'index.html'">
         </div>
 
     </form>
@@ -82,7 +81,6 @@
         }
 
         function register() {
-            console.log(showNum)
             const email = document.getElementById("email").value;
             const userName = document.getElementById("userName").value;
             const password = document.getElementById("password").value;
@@ -104,35 +102,27 @@
                     password: password,
                 };
                 console.log(params)
+                let res = 2;
                 $.get("http://localhost:3001/signup", params, function (result) {
                     console.log(result);
-                    if (result === 1) {
-                        window.alert('该邮箱已被注册')
-                        location.reload()
-                    } else {
-                        window.alert('注册成功！')
-                        window.location.href = '../index.html'
+                    if(result===0){
+                        window.alert('注册成功！');
+                        window.location.href = '../index.html';
+                    }else if (result === 1) {
+                        window.alert('该邮箱已被注册');
                     }
-                });
+                    res = result;
+                    console.log(res);
+                })
             }
+            return false;
         }
 
         $(function () {
             // 存放随机的验证码
-
             draw(showNum)
 
             $("#c").click(function () {
-                draw(showNum)
-            })
-            $("#btn").click(function () {
-                const s = $("#inputValue").val().toLowerCase();
-                const s1 = showNum.join("");
-                if (s === s1) {
-                    alert("提交成功")
-                } else {
-                    alert("验证码错误")
-                }
                 draw(showNum)
             })
 

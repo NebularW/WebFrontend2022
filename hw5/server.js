@@ -18,9 +18,9 @@ app.use(express.json())
 app.get('/login',function (req, res) {
     const params = req.query;
     console.log(params)
-    const q1 = "SELECT * from userinfo where email=" + "\"" + params.email + "\"";
-    console.log(q1)
-    connection.query(q1, function (error, result) {
+    const query = "SELECT * from user where email=" + "\"" + params.email + "\"";
+    console.log(query)
+    connection.query(query, function (error, result) {
         if (error) throw error;
         if (result.length === 0) {
             console.log("账号不存在")
@@ -39,16 +39,16 @@ app.get('/login',function (req, res) {
 app.get('/signup',function (req, res) {
     const params = req.query;
     console.log(params)
-    const q1 = "select * from userinfo where email=" + "\"" + params.email + "\"";
-    connection.query(q1, function (error, result) {
+    const query = "select * from user where email=" + "\"" + params.email + "\"";
+    connection.query(query, function (error, result) {
         if (error) throw error;
         if (result.length > 0) {
             console.log("邮箱已存在")
             res.send(1)
         } else {
-            const q2 = "insert into userinfo(email, phoneNumber, password) values(" + "\"" + params.email + "\",\"" + params.phoneNumber + "\",\"" + params.password + "\")";
-            console.log(q2)
-            connection.query(q2, function (error, result) {
+            const signupQuery = "insert into user(email, name, password) values(" + "\"" + params.email + "\",\"" + params.userName + "\",\"" + params.password + "\")";
+            console.log(signupQuery)
+            connection.query(signupQuery, function (error, result) {
                 if (error) throw error;
                 console.log("注册成功")
                 res.send(0)

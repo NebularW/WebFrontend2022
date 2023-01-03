@@ -51,7 +51,6 @@ function register() {
             console.log(result);
             if (result === 1) {
                 window.alert('该邮箱已被注册')
-                location.reload()
             } else {
                 window.alert('注册成功！')
                 window.location.href = '../index.html'
