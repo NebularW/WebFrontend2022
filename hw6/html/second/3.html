@@ -11,19 +11,20 @@
 </head>
 
 <body onload="load()">
-<div id="second">
-    <div class="header">
-        <text class="title" style="color: azure">欢迎，</text>
-        <div class="title" id="user" ></div>
-        <div class="btns">
-            <button class="headerBtn" onclick="window.location.href = '../first.html'">主页</button>
-            <button class="headerBtn" onclick="window.location.href = '../../index.html'">登出</button>
+    <div id="second">
+        <div class="header">
+            <text class="title" style="color: azure">欢迎，</text>
+            <div class="title" id="user"></div>
+            <div class="btns">
+                <button class="headerBtn" onclick="change()">图片风格迁移</button>
+                <button class="headerBtn" onclick="window.location.href = '../first.html'">主页</button>
+                <button class="headerBtn" onclick="window.location.href = '../../index.html'">登出</button>
+            </div>
         </div>
+
+        <img class="itemImg" src="../../assets/pics/h4.jpg" alt="">
+
     </div>
-
-    <img class="itemImg" src="../../assets/pics/h4.jpg" alt="">
-
-</div>
 </body>
 
 <script>
@@ -35,6 +36,10 @@
             window.alert('请先登录！')
             window.location.href = '../../index.html'
         }
+    }
+
+    function change() {
+        window.location.href = 'http://localhost:9966?curImg=3'
     }
 
     const user = document.getElementById('user');
