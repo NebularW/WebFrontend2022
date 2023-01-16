@@ -27,7 +27,7 @@ CREATE TABLE `user` (
 ## 2. 文件结构
 
 ```bash
-│  index.html
+│  login.html
 │  package-lock.json
 │  package.json
 │  README.md

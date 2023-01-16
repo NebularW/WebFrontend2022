@@ -46,7 +46,7 @@
         <div class="inputButtonBox">
             <input class="btn signUp"  type="submit" name="" value="注册" onclick="return register()">
             <input class="btn backSignIn" type="submit" name="" value="返回"
-                   onclick="window.location.href = '../index.html'">
+                   onclick="window.location.href = '../login.html'">
         </div>
 
     </form>
@@ -107,7 +107,7 @@
                     console.log(result);
                     if(result===0){
                         window.alert('注册成功！');
-                        window.location.href = '../index.html';
+                        window.location.href = '../login.html';
                     }else if (result === 1) {
                         window.alert('该邮箱已被注册');
                     }

@@ -413,7 +413,7 @@ class Main {
             styleBottleneck.dispose();
             identityBottleneck.dispose();
         }
-        this.styleButton.textContent = '图像风格迁移中...';
+        this.styleButton.textContent = 'stylizing...';
         await tf.nextFrame();
         const stylized = await tf.tidy(() => {
             return this.transformNet.predict([tf.browser.fromPixels(this.contentImg).toFloat().div(tf.scalar(255)).expandDims(), bottleneck]).squeeze();

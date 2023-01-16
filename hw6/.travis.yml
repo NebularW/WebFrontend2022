@@ -9,7 +9,7 @@ script:
   - "cp -r dist build/dist"
   - "cp -r saved_model_* build/"
   - "cp -r images build/images"
-  - "cp index.html build/index.html"
+  - "cp login.html build/login.html"
 deploy:
   provider: pages
   skip_cleanup: true

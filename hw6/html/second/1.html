@@ -16,13 +16,13 @@
             <text class="title" style="color: azure">欢迎，</text>
             <div class="title" id="user"></div>
             <div class="btns">
-                <button class="headerBtn" onclick="window.location.href = 'http://localhost:9966?curImg=1'">图片风格迁移</button>
+                <button class="headerBtn" onclick="change()">图片风格迁移</button>
                 <button class="headerBtn" onclick="window.location.href = '../first.html'">主页</button>
-                <button class="headerBtn" onclick="window.location.href = '../../index.html'">登出</button>
+                <button class="headerBtn" onclick="window.location.href = '../../login.html'">登出</button>
             </div>
         </div>
 
-        <img class="itemImg" src="../../assets/pics/v1.jpg" alt="">
+        <img class="itemImg" src="../../assets/pics/1.jpg" alt="">
 
     </div>
 </body>
@@ -34,12 +34,12 @@
         console.log(email)
         // if (email == null) {
         //     window.alert('请先登录！')
-        //     window.location.href = '../../index.html'
+        //     window.location.href = '../../login.html'
         // }
     }
 
     function change() {
-        window.location.href = 'http://localhost:9966?curImg=1'
+        window.location.href = 'http://localhost:9966?curImg=1';
     }
 
     const user = document.getElementById('user');
